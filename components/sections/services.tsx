@@ -1,55 +1,34 @@
+"use client";
+
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
-
-const services = [
-  {
-    n: "01",
-    tag: "Software",
-    title: "Custom software",
-    text: "Web systems and applications designed around your operation — from internal tools to customer-facing products.",
-  },
-  {
-    n: "02",
-    tag: "Platforms",
-    title: "Platforms & systems",
-    text: "Robust platforms with clean architecture, prepared for scale, new features and long-term maintenance.",
-  },
-  {
-    n: "03",
-    tag: "Integrations",
-    title: "Integrations",
-    text: "Connect your stack: APIs, third-party services and data flows working as one coherent system.",
-  },
-  {
-    n: "04",
-    tag: "Custom Solutions",
-    title: "Tailored solutions",
-    text: "When off-the-shelf is not enough — focused solutions for specific business constraints and goals.",
-  },
-] as const;
+import { useLanguage } from "@/components/language-provider";
 
 export function Services() {
+  const { t } = useLanguage();
+  const copy = t.services;
   return (
-    <section id="services" aria-label="Services" className="bg-[#050505]">
+    <section id="services" aria-label="Services" className="scroll-mt-20 bg-[#050505]">
       <div className="mx-auto w-full max-w-7xl px-5 py-24 sm:px-8 sm:py-32">
         <SectionHeading
           index="02"
-          eyebrow="Services"
-          title="What JTT builds"
-          description="Four focused areas. Editorial, precise, and built for business outcomes — not generic feature lists."
+          eyebrow={copy.eyebrow}
+          title={copy.title}
+          description={copy.description}
+          direction="left"
         />
         <div className="mt-12 border-t border-[#242424]">
-          {services.map((s) => (
-            <Reveal key={s.n}>
-              <article className="group grid gap-4 border-b border-[#242424] py-8 transition-colors sm:grid-cols-[64px_180px_1fr] sm:items-baseline sm:gap-8 sm:py-10 hover:bg-[#0D0D0D]/60">
-                <p className="font-technical text-sm text-[#8A8A8A]">{s.n}</p>
+          {copy.items.map((s) => (
+            <Reveal key={s.n} direction="left">
+              <article className="group grid gap-4 border-b border-[#242424] py-8 transition-all duration-500 sm:grid-cols-[64px_180px_1fr] sm:items-baseline sm:gap-8 sm:py-10 hover:bg-[#0D0D0D]/60 hover:pl-2 sm:hover:pl-4">
+                <p className="font-technical text-sm text-[#8A8A8A] transition-colors duration-300 group-hover:text-[#4F7CFF]">{s.n}</p>
                 <p>
-                  <span className="inline-flex rounded-full border border-[#242424] bg-[#141414] px-3 py-1 font-technical text-xs tracking-wider text-white uppercase">
+                  <span className="inline-flex rounded-full border border-[#242424] bg-[#141414] px-3 py-1 font-technical text-xs tracking-wider text-white uppercase transition-all duration-300 group-hover:border-[#4F7CFF]/50 group-hover:bg-[#4F7CFF]/10">
                     {s.tag}
                   </span>
                 </p>
                 <div className="max-w-2xl">
-                  <h3 className="font-display text-xl font-semibold sm:text-2xl">
+                  <h3 className="font-display text-xl font-semibold transition-transform duration-500 group-hover:translate-x-1 sm:text-2xl">
                     {s.title}
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-[#8A8A8A] sm:text-base sm:leading-7">

@@ -1,31 +1,76 @@
 "use client";
 
-import Link from "next/link";
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  type Variants,
+} from "motion/react";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/components/language-provider";
+import { useLoading } from "@/components/loading-provider";
+import { ScrollLink } from "@/components/scroll-link";
 
 /**
- * Hero scroll choreography (scroll-linked, reversible):
- * progress 0 -> 1 drives opacity / y / scale via useTransform.
- * Scrolling back reverses the same mapping. No one-shot play().
+ * Hero — cinematic one-shot entrance + scroll-linked parallax.
+ * - Eyebrow fades/slides, headline lines rise inside overflow masks
+ *   (clip reveal, transform-only), sub/CTAs follow with scale+blur.
+ * - Content drifts up + fades on scroll; backdrop scales, fades and
+ *   the accent glow travels — restrained to transform/opacity.
  */
+const container: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.14, delayChildren: 0.1 } },
+};
+
+const fadeItem: Variants = {
+  hidden: { opacity: 0, y: 32, scale: 0.98, filter: "blur(8px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const lineMask: Variants = {
+  hidden: { y: "110%" },
+  show: {
+    y: "0%",
+    transition: { duration: 1.05, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const lineFade: Variants = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 0.4 } },
+};
+
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
+  const { t } = useLanguage();
+  // The cinematic entrance only plays once the loading veil lifts,
+  // so it never performs hidden behind the loader.
+  const { loaded } = useLoading();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
 
-  const headlineY = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const headlineOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const subY = useTransform(scrollYProgress, [0, 1], [0, -120]);
-  const subOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
-  const bgOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.35]);
-  const indicatorOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
+  // Content choreography on scroll: rises, shrinks slightly, fades.
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
+  const contentScale = useTransform(scrollYProgress, [0, 1], [1, 0.97]);
+
+  // Backdrop choreography: slow zoom-out + fade + glow drift.
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
+  const bgOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
+  const glowY = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
   return (
     <section
@@ -41,73 +86,101 @@ export function Hero() {
         className="absolute inset-0"
       >
         <div className="absolute inset-0 bg-[#050505]" />
-        <div
+        <motion.div
           className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "linear-gradient(to bottom, transparent 55%, #050505 96%), radial-gradient(ellipse 70% 50% at 50% 38%, rgba(79,124,255,0.22), transparent 70%), repeating-linear-gradient(to right, rgba(255,255,255,0.05) 0 1px, transparent 1px 96px), repeating-linear-gradient(to bottom, rgba(255,255,255,0.04) 0 1px, transparent 1px 96px)",
-          }}
-        />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#050505] to-transparent" />
+          style={reduce ? undefined : { y: glowY }}
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "linear-gradient(to bottom, transparent 50%, #050505 96%), radial-gradient(ellipse 75% 55% at 50% 36%, rgba(79,124,255,0.32), transparent 70%), radial-gradient(ellipse 40% 28% at 78% 62%, rgba(79,124,255,0.12), transparent 70%), repeating-linear-gradient(to right, rgba(255,255,255,0.055) 0 1px, transparent 1px 96px), repeating-linear-gradient(to bottom, rgba(255,255,255,0.045) 0 1px, transparent 1px 96px)",
+            }}
+          />
+        </motion.div>
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#050505] via-[#050505]/70 to-transparent" />
+        {/* Fine top glow line */}
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#4F7CFF]/60 to-transparent" />
       </motion.div>
 
-      <div className="relative mx-auto w-full max-w-7xl px-5 pt-32 pb-16 sm:px-8 sm:pb-20">
+      <motion.div
+        variants={reduce ? undefined : container}
+        initial={reduce ? false : "hidden"}
+        animate={reduce ? undefined : loaded ? "show" : "hidden"}
+        style={
+          reduce
+            ? undefined
+            : { y: contentY, opacity: contentOpacity, scale: contentScale }
+        }
+        className="relative mx-auto w-full max-w-7xl px-5 pt-32 pb-16 sm:px-8 sm:pb-20"
+      >
         <motion.p
-          style={reduce ? undefined : { y: subY, opacity: subOpacity }}
+          variants={reduce ? undefined : fadeItem}
           className="font-technical inline-flex items-center gap-3 text-xs tracking-[0.25em] text-[#8A8A8A] uppercase"
         >
-          <span className="inline-block size-1.5 rounded-full bg-[#4F7CFF]" />
-          Just Think Technology — Software Engineering
+          <span className="relative flex size-1.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#4F7CFF] opacity-60" />
+            <span className="relative inline-flex size-1.5 rounded-full bg-[#4F7CFF]" />
+          </span>
+          {t.hero.eyebrow}
         </motion.p>
 
         <motion.h1
-          style={reduce ? undefined : { y: headlineY, opacity: headlineOpacity }}
+          variants={reduce ? undefined : lineFade}
           className="font-display mt-6 max-w-5xl text-5xl leading-[1.02] font-semibold tracking-tight text-balance sm:text-6xl lg:text-8xl"
         >
-          Think Smarter.
-          <br />
-          <span className="text-[#8A8A8A]">Build Better.</span>
+          <span className="block overflow-hidden pb-1">
+            <motion.span variants={reduce ? undefined : lineMask} className="block will-change-transform">
+              Think Smarter.
+            </motion.span>
+          </span>
+          <span className="block overflow-hidden pb-2 text-[#8A8A8A]">
+            <motion.span variants={reduce ? undefined : lineMask} className="block will-change-transform">
+              Build Better.
+              <span aria-hidden="true" className="jtt-caret text-white">
+                _
+              </span>
+            </motion.span>
+          </span>
         </motion.h1>
 
         <motion.div
-          style={reduce ? undefined : { y: subY, opacity: subOpacity }}
+          variants={reduce ? undefined : fadeItem}
           className="mt-8 flex max-w-2xl flex-col gap-8"
         >
           <p className="text-base leading-7 text-[#8A8A8A] sm:text-lg sm:leading-8">
-            JTT designs and builds reliable, scalable and evolvable software for
-            real business problems — structured technology, solid engineering,
-            real impact.
+            {t.hero.sub}
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Button
               asChild
               size="lg"
-              className="rounded-full bg-white text-black hover:bg-[#4F7CFF] hover:text-white"
+              className="rounded-full bg-white text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#4F7CFF] hover:text-white hover:shadow-[0_16px_48px_-12px_rgba(79,124,255,0.65)]"
             >
-              <Link href="#contact">
-                Start a project <ArrowUpRight size={16} />
-              </Link>
+              <ScrollLink to="contact">
+                {t.hero.primaryCta} <ArrowUpRight size={16} />
+              </ScrollLink>
             </Button>
             <Button
               asChild
               size="lg"
               variant="outline"
-              className="rounded-full border-[#242424] bg-transparent text-white hover:border-white/40 hover:bg-white/5 hover:text-white"
+              className="rounded-full border-[#242424] bg-transparent text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/5 hover:text-white"
             >
-              <Link href="#cases">Our work</Link>
+              <ScrollLink to="cases">{t.hero.secondaryCta}</ScrollLink>
             </Button>
           </div>
         </motion.div>
 
         <motion.a
           href="#about"
-          style={reduce ? undefined : { opacity: indicatorOpacity }}
+          variants={reduce ? undefined : fadeItem}
           className="mt-14 inline-flex items-center gap-2 font-technical text-xs tracking-[0.2em] text-[#8A8A8A] uppercase hover:text-white"
-          aria-label="Scroll to about section"
+          aria-label={t.hero.scrollAria}
         >
-          <ArrowDown size={14} className="animate-bounce" /> Scroll
+          <ArrowDown size={14} className="animate-bounce" /> {t.hero.scroll}
         </motion.a>
-      </div>
+      </motion.div>
     </section>
   );
 }

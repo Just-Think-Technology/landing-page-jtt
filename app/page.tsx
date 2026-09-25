@@ -11,31 +11,31 @@ import { Team } from "@/components/sections/team";
 import { Contact } from "@/components/sections/contact";
 import { ManifestoLine } from "@/components/sections/manifesto-line";
 import { FinalCta } from "@/components/sections/final-cta";
+import { LanguageProvider } from "@/components/language-provider";
+import { LoadingProvider } from "@/components/loading-provider";
+import { SkipLink } from "@/components/skip-link";
 
 export default function Home() {
   return (
-    <>
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:text-black"
-      >
-        Skip to content
-      </a>
-      <SiteHeader />
-      <main id="main">
-        <Hero />
-        <Positioning />
-        <Services />
-        <Process />
-        <Cases />
-        <Products />
-        <WhyJtt />
-        <Team />
-        <Contact />
-        <ManifestoLine />
-        <FinalCta />
-      </main>
-      <SiteFooter />
-    </>
+    <LanguageProvider>
+      <LoadingProvider>
+        <SkipLink />
+        <SiteHeader />
+        <main id="main" className="overflow-x-clip">
+          <Hero />
+          <Positioning />
+          <Services />
+          <Process />
+          <Cases />
+          <Products />
+          <WhyJtt />
+          <Team />
+          <Contact />
+          <ManifestoLine />
+          <FinalCta />
+        </main>
+        <SiteFooter />
+      </LoadingProvider>
+    </LanguageProvider>
   );
 }
