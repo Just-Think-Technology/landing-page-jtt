@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/components/language-provider";
 import { useLoading } from "@/components/loading-provider";
 import { ScrollLink } from "@/components/scroll-link";
+import { HeroLogo } from "@/components/sections/hero-logo";
 
 /**
  * Hero — cinematic one-shot entrance + scroll-linked parallax.
@@ -77,7 +78,7 @@ export function Hero() {
       ref={ref}
       id="top"
       aria-label="Introduction"
-      className="relative flex min-h-[100svh] items-end overflow-hidden"
+      className="relative flex min-h-[100svh] items-center overflow-hidden lg:min-h-[92svh]"
     >
       {/* Cinematic backdrop — transform/opacity only */}
       <motion.div
@@ -112,8 +113,10 @@ export function Hero() {
             ? undefined
             : { y: contentY, opacity: contentOpacity, scale: contentScale }
         }
-        className="relative mx-auto w-full max-w-7xl px-5 pt-32 pb-16 sm:px-8 sm:pb-20"
+        className="relative mx-auto w-full max-w-7xl px-5 pt-28 pb-16 sm:px-8 sm:pb-20 lg:pt-32 lg:pb-24"
       >
+        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
+          <div>
         <motion.p
           variants={reduce ? undefined : fadeItem}
           className="font-technical inline-flex items-center gap-3 text-xs tracking-[0.25em] text-[#8A8A8A] uppercase"
@@ -171,6 +174,16 @@ export function Hero() {
             </Button>
           </div>
         </motion.div>
+          </div>
+
+          {/* Desktop-only logo — hidden on mobile/tablet */}
+          <motion.div
+            variants={reduce ? undefined : fadeItem}
+            className="hidden justify-center lg:flex"
+          >
+            <HeroLogo />
+          </motion.div>
+        </div>
 
         <motion.a
           href="#about"

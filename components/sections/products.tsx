@@ -2,17 +2,18 @@
 
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
-import { ScrollLink } from "@/components/scroll-link";
 import { useLanguage } from "@/components/language-provider";
 
 /**
  * Products — JTT-owned systems currently in development.
  * Content-integrity rule: descriptions are grounded in the product docs;
  * no launch claims, metrics or availability beyond "In development".
+ *
+ * Each card shows a system-preview visual where the notify CTA and
+ * tech stack used to be. Swap the placeholder panel for a real
+ * screenshot (e.g. public/products/<slug>.png) when assets exist.
  */
 export function Products() {
   const ref = useRef<HTMLDivElement>(null);
@@ -61,29 +62,20 @@ export function Products() {
                 <p className="mt-5 flex-1 text-sm leading-6 text-[#8A8A8A] sm:text-base sm:leading-7">
                   {p.text}
                 </p>
-                {"stack" in p && p.stack ? (
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {p.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-full border border-[#242424] px-3 py-1 font-technical text-[11px] tracking-wider text-white/70 uppercase"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                ) : null}
-                <div className="mt-8">
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="lg"
-                    className="rounded-full border-[#242424] bg-transparent text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/5 hover:text-white"
+                {/* System preview — replace with a real screenshot when available. */}
+                <div className="mt-8 overflow-hidden rounded-xl border border-[#242424] bg-[#0D0D0D]">
+                  <div
+                    aria-hidden="true"
+                    className="relative flex aspect-[16/10] items-center justify-center"
+                    style={{
+                      backgroundImage:
+                        "radial-gradient(ellipse 70% 60% at 50% 40%, rgba(79,124,255,0.18), transparent 70%), repeating-linear-gradient(to right, rgba(255,255,255,0.05) 0 1px, transparent 1px 48px), repeating-linear-gradient(to bottom, rgba(255,255,255,0.04) 0 1px, transparent 1px 48px)",
+                    }}
                   >
-                    <ScrollLink to="contact">
-                      {copy.getNotified} <ArrowUpRight size={16} />
-                    </ScrollLink>
-                  </Button>
+                    <span className="font-display text-5xl font-semibold tracking-tight text-white/15">
+                      {p.name.charAt(0)}
+                    </span>
+                  </div>
                 </div>
               </article>
             </Reveal>
