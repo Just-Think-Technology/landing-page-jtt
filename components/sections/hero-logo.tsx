@@ -66,7 +66,7 @@ export function HeroLogo() {
     >
       <div ref={imgRef} className="will-change-transform">
         <Image
-          src="/fundo-cinza-logo-circular.png"
+          src="/logo-branco-sem-fundo.png"
           alt=""
           width={800}
           height={800}

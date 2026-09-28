@@ -43,9 +43,9 @@ export function SiteHeader() {
           className="flex items-center gap-2.5"
           ariaLabel={t.backToTop}
         >
-          <span className="flex size-9 items-center justify-center overflow-hidden rounded-full bg-white">
+          <span className="flex size-9 items-center justify-center overflow-hidden">
             <Image
-              src="/sem-fundo-logo.png"
+              src="/logo-branco-sem-fundo.png"
               alt=""
               width={36}
               height={36}

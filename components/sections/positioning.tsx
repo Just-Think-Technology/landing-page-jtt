@@ -22,7 +22,7 @@ export function Positioning() {
         <Reveal direction="down" delay={0.05}>
           <p className="font-display mt-6 max-w-5xl text-2xl leading-snug font-medium tracking-tight text-balance sm:text-4xl sm:leading-tight">
             {copy.body}{" "}
-            <span className="text-white">{copy.bodyHighlight1}</span>{" "}
+            <span className="text-white">{copy.bodyHighlight1}</span>
             {copy.bodyMiddle}{" "}
             <span className="text-white">{copy.bodyHighlight2}</span>
             {copy.bodyEnd}{" "}

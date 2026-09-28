@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Just Think Technology · Think Smarter. Build Better.",
+    default: "JT Technology",
     template: "%s | Just Think Technology",
   },
   description:

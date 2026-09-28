@@ -4,21 +4,27 @@ import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
+import { ProductPreviewDialog } from "@/components/product-preview-dialog";
 import { useLanguage } from "@/components/language-provider";
 
+/**
+ * Real system screenshots per product. Cards without an entry keep the
+ * placeholder panel until their asset exists in public/.
+ */
+const PREVIEWS: Record<string, { src: string; width: number; height: number }> =
+  {
+    Vendono: { src: "/vendono.png", width: 1777, height: 885 },
+    "Pode Deixar": { src: "/pode-deixar.png", width: 1861, height: 927 },
+  };
 /**
  * Products — JTT-owned systems currently in development.
  * Content-integrity rule: descriptions are grounded in the product docs;
  * no launch claims, metrics or availability beyond "In development".
- *
- * Each card shows a system-preview visual where the notify CTA and
- * tech stack used to be. Swap the placeholder panel for a real
- * screenshot (e.g. public/products/<slug>.png) when assets exist.
  */
 export function Products() {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const copy = t.products;
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -62,20 +68,39 @@ export function Products() {
                 <p className="mt-5 flex-1 text-sm leading-6 text-[#8A8A8A] sm:text-base sm:leading-7">
                   {p.text}
                 </p>
-                {/* System preview — replace with a real screenshot when available. */}
+                {/* System preview — real screenshot opens in a lightbox when available. */}
                 <div className="mt-8 overflow-hidden rounded-xl border border-[#242424] bg-[#0D0D0D]">
-                  <div
-                    aria-hidden="true"
-                    className="relative flex aspect-[16/10] items-center justify-center"
-                    style={{
-                      backgroundImage:
-                        "radial-gradient(ellipse 70% 60% at 50% 40%, rgba(79,124,255,0.18), transparent 70%), repeating-linear-gradient(to right, rgba(255,255,255,0.05) 0 1px, transparent 1px 48px), repeating-linear-gradient(to bottom, rgba(255,255,255,0.04) 0 1px, transparent 1px 48px)",
-                    }}
-                  >
-                    <span className="font-display text-5xl font-semibold tracking-tight text-white/15">
-                      {p.name.charAt(0)}
-                    </span>
-                  </div>
+                  {(() => {
+                    const preview = PREVIEWS[p.name];
+                    return preview ? (
+                      <ProductPreviewDialog
+                        src={preview.src}
+                        width={preview.width}
+                        height={preview.height}
+                        productName={p.name}
+                        thumbnailAlt={
+                          locale === "pt"
+                            ? `Prévia do sistema ${p.name}`
+                            : `${p.name} system preview`
+                        }
+                        expandLabel={copy.expandPreview}
+                        closeLabel={copy.closePreview}
+                      />
+                    ) : (
+                      <div
+                        aria-hidden="true"
+                        className="relative flex aspect-[16/10] items-center justify-center"
+                        style={{
+                          backgroundImage:
+                            "radial-gradient(ellipse 70% 60% at 50% 40%, rgba(79,124,255,0.18), transparent 70%), repeating-linear-gradient(to right, rgba(255,255,255,0.05) 0 1px, transparent 1px 48px), repeating-linear-gradient(to bottom, rgba(255,255,255,0.04) 0 1px, transparent 1px 48px)",
+                        }}
+                      >
+                        <span className="font-display text-5xl font-semibold tracking-tight text-white/15">
+                          {p.name.charAt(0)}
+                        </span>
+                      </div>
+                    );
+                  })()}
                 </div>
               </article>
             </Reveal>

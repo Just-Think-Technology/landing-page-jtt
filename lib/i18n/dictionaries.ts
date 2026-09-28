@@ -109,7 +109,7 @@ export const dictionaries = {
         {
           n: "04",
           title: "Evoluir",
-          text: "Lançar é o meio, não o fim: medimos, aprendemos e melhoramos em ciclos. Os sistemas nascem preparados para a próxima iteração. Nunca como legado.",
+          text: "Lançar é o meio, não o fim: medimos, aprendemos e melhoramos em ciclos. Os sistemas nascem preparados para a próxima evolução. Nunca como legado.",
         },
         {
           n: "05",
@@ -139,6 +139,8 @@ export const dictionaries = {
         "Nossos sistemas próprios, em desenvolvimento. A mesma engenharia estruturada de cada entrega que fazemos.",
       inDevelopment: "Em desenvolvimento",
       getNotified: "Avise-me",
+      expandPreview: "Ampliar imagem do sistema",
+      closePreview: "Fechar imagem ampliada",
       items: [
         {
           name: "Vendono",
@@ -177,7 +179,7 @@ export const dictionaries = {
         },
         {
           title: "Parceria de longo prazo",
-          text: "Ficamos depois do lançamento: manutenção, iteração e melhoria contínua.",
+          text: "Ficamos depois do lançamento: manutenção, evolução e melhoria contínua.",
         },
       ],
     },
@@ -371,6 +373,8 @@ export const dictionaries = {
         "Our own systems, currently in development. The same structured engineering behind every delivery we make.",
       inDevelopment: "In development",
       getNotified: "Get notified",
+      expandPreview: "Expand system image",
+      closePreview: "Close expanded image",
       items: [
         {
           name: "Vendono",
