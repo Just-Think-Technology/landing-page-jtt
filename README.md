@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JTT — Just Think Technology
 
-## Getting Started
+> Software que resolve problemas reais de negócio: pensado com rigor, construído com engenharia sólida e feito para evoluir.
 
-First, run the development server:
+## Sumário
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [O problema que resolvemos](#o-problema-que-resolvemos)
+- [O que o site faz](#o-que-o-site-faz)
+- [Como funciona](#como-funciona)
+- [Por que confiar](#por-que-confiar)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## O problema que resolvemos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Contratar software costuma virar uma caixa-preta: proposta genérica, arquitetura improvisada, prazo que não se sustenta e um sistema que nasce difícil de manter. A empresa paga por tecnologia e recebe retrabalho.
 
-## Learn More
+A JTT existe para inverter isso: entender o negócio antes da primeira linha de código, decidir arquitetura com clareza e entregar sistemas que continuam evoluindo depois do lançamento.
 
-To learn more about Next.js, take a look at the following resources:
+## O que o site faz
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O site institucional apresenta a JTT em uma única página: posicionamento, serviços, processo de trabalho, cases, produtos e time. É a porta de entrada de quem quer conhecer a empresa antes de conversar.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![Página inicial do site da JTT](docs/assets/print-principal.png)
 
-## Deploy on Vercel
+**Para quem procura um parceiro de tecnologia:**
+- Entende o que a JTT faz: software sob medida, plataformas, integrações e soluções específicas.
+- Vê o processo em cinco etapas, do entendimento à evolução.
+- Conhece cases e produtos, sem métrica ou depoimento inventado.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Para quem quer falar com a JTT:**
+- Encontra o time e os canais de contato direto.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Como funciona
+
+1. A pessoa chega pelo topo, com o posicionamento da JTT.
+2. Percorre serviços, processo, cases, produtos, diferenciais e time.
+3. Chega ao contato e fala por email ou WhatsApp.
+
+## Por que confiar
+
+- Cases reais, sem número ou depoimento inventado.
+- Engenharia focada no negócio, com arquitetura limpa e evolução de longo prazo.
+- Contato direto com quem projeta e constrói.
+
+## Acessar
+
+[Acesse jttechnology.com.br](https://jttechnology.com.br).
+
+---
+
+<p>
+  <img src="docs/assets/fundo-cinza-logo-circular.png" alt="JT Technology" width="120" align="left" />
+  <br />
+  <strong>JT Technology</strong><br />
+  <em>Think Smarter. Build Better.</em>
+</p>
