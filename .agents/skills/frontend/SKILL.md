@@ -1,4 +1,8 @@
-# Skill — JTT Frontend
+---
+name: frontend
+description: Build and refine the JTT homepage with production-grade Next.js and React conventions: sections, responsive behavior, UI refactors and prototype translation.
+---
+# JTT Frontend
 
 ## Purpose
 Build and refine the JTT homepage using production-grade Next.js/React conventions while preserving the approved visual direction.

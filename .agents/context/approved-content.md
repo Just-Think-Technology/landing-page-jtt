@@ -17,7 +17,7 @@ Themes supported by the approved company material:
 - sustainable solutions
 
 Known team:
-- Thiago Canato de Azevedo — CEO
-- Júlio Francisco Bernardino — CTO
+- Thiago Canato de Azevedo, CEO
+- Júlio Francisco Bernardino, CTO
 
 Do not add numerical results or claims unless separately verified and approved.

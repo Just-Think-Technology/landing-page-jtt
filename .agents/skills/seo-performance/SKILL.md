@@ -1,4 +1,8 @@
-# Skill — JTT SEO & Performance
+---
+name: seo-performance
+description: Protect discoverability, Core Web Vitals and perceived speed: metadata, images, video, fonts, animation and 3D.
+---
+# JTT SEO and Performance
 
 ## Purpose
 Protect the institutional site's discoverability, Core Web Vitals and perceived speed.

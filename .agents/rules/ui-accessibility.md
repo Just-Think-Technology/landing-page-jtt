@@ -1,3 +1,9 @@
+---
+tipo: rule
+origin: project
+scope: accessibility and keyboard behavior of the site
+enforcement: code review and visual QA
+---
 # Accessibility Rules
 
 - semantic landmarks and logical heading hierarchy

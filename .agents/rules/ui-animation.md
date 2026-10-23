@@ -1,3 +1,9 @@
+---
+tipo: rule
+origin: project
+scope: motion and animation across the site
+enforcement: code review and visual QA
+---
 # Animation Rules
 
 ## Tool ownership

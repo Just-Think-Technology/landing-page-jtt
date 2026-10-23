@@ -1,4 +1,4 @@
-# Workflow — Dependency Change
+# Workflow: Dependency Change
 
 1. Inspect `package.json`.
 2. Search the codebase for an existing capability.

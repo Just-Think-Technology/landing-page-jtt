@@ -1,0 +1,24 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "AGENTS.md",
+    ".agents/rules/clean-code.md",
+    ".agents/rules/comments.md",
+    ".agents/rules/testing.md",
+    ".agents/rules/security.md",
+    ".agents/rules/git.md",
+    ".agents/rules/documentation.md",
+    ".agents/rules/stack-nextjs.md",
+    ".agents/rules/stack-react.md"
+  ],
+  "references": {
+    "agents": {
+      "path": "./.agents",
+      "description": "Rules, decisions, context, workflows, checklists and skills"
+    },
+    "product": {
+      "path": "./docs",
+      "description": "Screenshots and site assets"
+    }
+  }
+}

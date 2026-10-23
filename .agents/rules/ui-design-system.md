@@ -1,3 +1,9 @@
+---
+tipo: rule
+origin: project
+scope: visual language, palette, typography and layout
+enforcement: visual QA
+---
 # JTT Design System
 
 Feel: technical, premium, precise, cinematic, editorial, ambitious, modern and restrained.

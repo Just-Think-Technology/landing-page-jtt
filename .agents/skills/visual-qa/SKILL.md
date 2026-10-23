@@ -1,4 +1,8 @@
-# Skill — JTT Visual QA
+---
+name: visual-qa
+description: Review the homepage as a complete visual system: major UI changes, prototype fidelity and release readiness.
+---
+# JTT Visual QA
 
 ## Purpose
 Review the homepage as a complete visual system rather than checking isolated components.

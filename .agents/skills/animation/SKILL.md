@@ -1,4 +1,8 @@
-# Skill — JTT Animation
+---
+name: animation
+description: Implement cinematic interaction on the JTT site: scroll choreography, hero motion, reveals, parallax and animation performance review.
+---
+# JTT Animation
 
 ## Purpose
 Implement cinematic interaction without turning the homepage into an animation demo.

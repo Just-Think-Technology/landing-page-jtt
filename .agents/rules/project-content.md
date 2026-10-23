@@ -1,3 +1,9 @@
+---
+tipo: rule
+origin: project
+scope: site copy and factual claims
+enforcement: content review
+---
 # Content Rules
 
 JTT is a technology company focused on software and digital systems that solve real business problems.

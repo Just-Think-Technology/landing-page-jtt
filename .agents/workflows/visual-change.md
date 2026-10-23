@@ -1,4 +1,4 @@
-# Workflow — Visual Change
+# Workflow: Visual Change
 
 Before editing: inspect the component, adjacent tokens/styles, responsive states and animation ownership.
 

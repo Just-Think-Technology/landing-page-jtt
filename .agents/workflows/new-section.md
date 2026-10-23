@@ -1,4 +1,4 @@
-# Workflow — New Section
+# Workflow: New Section
 
 1. Define the section's job in the narrative.
 2. Identify the user question it answers.

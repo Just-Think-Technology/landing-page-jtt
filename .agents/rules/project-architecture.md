@@ -1,3 +1,9 @@
+---
+tipo: rule
+origin: project
+scope: Next.js rendering and component boundaries
+enforcement: code review
+---
 # Architecture Rules
 
 - Prefer Next.js Server Components by default.

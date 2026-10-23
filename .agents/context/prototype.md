@@ -1,4 +1,4 @@
-# JTT Homepage — Prototype Contract
+# JTT Homepage: Prototype Contract
 
 Reference prototype:
 https://done-chunk-85975887.figma.site/

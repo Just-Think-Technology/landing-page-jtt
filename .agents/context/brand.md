@@ -4,10 +4,10 @@ Name: Just Think Technology
 Slogan: **Think Smarter. Build Better.**
 
 References:
-- GTA VI — cinematic storytelling and atmosphere
-- Apple — clarity, typography and precision
-- Epic.net — editorial/project presentation
-- Webflow — interaction and motion
+- GTA VI: cinematic storytelling and atmosphere
+- Apple: clarity, typography and precision
+- Epic.net: editorial and project presentation
+- Webflow: interaction and motion
 
 These references establish direction only and must not be copied.
 

@@ -1,4 +1,8 @@
-# Skill — JTT Architecture
+---
+name: architecture
+description: Keep the JTT site fast and predictable while supporting a highly animated homepage: routes, Server vs Client Components, animation infrastructure and page structure.
+---
+# JTT Architecture
 
 ## Purpose
 Keep the JTT website fast, maintainable and predictable while supporting a highly animated homepage.

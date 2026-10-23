@@ -1,3 +1,9 @@
+---
+tipo: rule
+origin: project
+scope: frontend implementation with Tailwind CSS and shadcn/ui
+enforcement: code review
+---
 # Frontend Rules
 
 Use the project's existing Tailwind CSS and shadcn/ui conventions.
