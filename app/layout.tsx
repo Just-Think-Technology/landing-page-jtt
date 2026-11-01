@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: {
     default: "JT Technology",
-    template: "%s | Just Think Technology",
+    template: "%s | JT Technology",
   },
   description:
     "Projetamos e construímos software confiável, escalável e evolutivo para problemas reais de negócio: tecnologia estruturada, engenharia sólida, impacto real.",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     apple: "/icon.png",
   },
   openGraph: {
-    title: "Just Think Technology · Think Smarter. Build Better.",
+    title: "JT Technology · Think Smarter. Build Better.",
     description:
       "Tecnologia estruturada, engenharia sólida e impacto real no negócio.",
     type: "website",

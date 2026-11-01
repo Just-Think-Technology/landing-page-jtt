@@ -1,5 +1,5 @@
 export const site = {
-  name: "Just Think Technology",
+  name: "JT Technology",
   shortName: "JTT",
   slogan: "Think Smarter. Build Better.",
   description:

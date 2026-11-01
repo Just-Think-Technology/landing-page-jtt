@@ -1,6 +1,6 @@
 # JTT Brand Context
 
-Name: Just Think Technology
+Name: JT Technology
 Slogan: **Think Smarter. Build Better.**
 
 References:

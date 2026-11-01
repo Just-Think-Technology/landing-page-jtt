@@ -13,7 +13,7 @@ export function BrandLoader({ progress }: { progress: number }) {
   return (
     <motion.div
       role="status"
-      aria-label="Loading Just Think Technology"
+      aria-label="Loading JT Technology"
       className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#050505]"
       exit={{ opacity: 0, scale: 1.06, filter: "blur(6px)" }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
