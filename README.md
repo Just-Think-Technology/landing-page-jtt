@@ -1,4 +1,4 @@
-# JTT — Just Think Technology
+# JT Technology
 
 > Software que resolve problemas reais de negócio: pensado com rigor, construído com engenharia sólida e feito para evoluir.
 

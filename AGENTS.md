@@ -1,6 +1,6 @@
 # landing-page-jtt: agent guide
 
-Institutional site of JTT (Just Think Technology), live at `jttechnology.com.br`. It must read as a premium, cinematic, editorial technology company, not a generic agency, template or SaaS landing page. Slogan: **Think Smarter. Build Better.**
+Institutional site of JT Technology, live at `jttechnology.com.br`. It must read as a premium, cinematic, editorial technology company, not a generic agency, template or SaaS landing page. Slogan: **Think Smarter. Build Better.**
 
 This file is the map. The rules live in `.agents/rules/`; do not repeat them here.
 
