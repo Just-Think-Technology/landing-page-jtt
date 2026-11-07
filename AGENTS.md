@@ -53,9 +53,21 @@ The current information architecture, section order and prototype requirements l
 6. Review the diff against the rules.
 7. Report what changed and what was actually verified. Do not claim a check passed unless it ran.
 
+## Read before any change
+
+These files are mandatory reading before editing code. The rest of `.agents/` is read on demand.
+
+- `.agents/rules/clean-code.md`
+- `.agents/rules/comments.md`
+- `.agents/rules/testing.md`
+- `.agents/rules/security.md`
+- `.agents/rules/git.md`
+- `.agents/rules/documentation.md`
+- `.agents/rules/stack-nextjs.md` (the active stack pack)
+
 ## Rules
 
-Always loaded through `opencode.json`: `clean-code`, `comments`, `testing`, `security`, `git`, `documentation`, `stack-nextjs`, `stack-react`.
+Always loaded: the files in the `Read before any change` section above.
 
 Read on demand:
 
