@@ -34,7 +34,7 @@ Read, in this order:
 
 1. `AGENTS.md`.
 2. The 6 baseline rules in `.agents/rules/`.
-3. The active stack packs listed in `opencode.json`.
+3. The active stack packs listed in the `Read before any change` section of `AGENTS.md`.
 4. Project rules referenced by `AGENTS.md`.
 5. Decisions under `.agents/decisions/` that the change touches.
 

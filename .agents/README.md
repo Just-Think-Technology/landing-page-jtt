@@ -1,6 +1,6 @@
 # JTT Agent System: baseline
 
-`baseline: jtt-agents v1`
+`baseline: jtt-agents v2`
 
 This folder is the source for the `.agents/` system used in JTT repositories. It is copied into a repository, never referenced from it, so the repository stays self-contained.
 
@@ -11,7 +11,6 @@ Source of truth: `001-company/standards/agent-system.md`. If this README and the
 | Path | Purpose |
 |---|---|
 | `AGENTS.md` | Repository map template, maximum 150 lines |
-| `opencode.json` | opencode configuration template |
 | `rules/` | 6 baseline rules plus 4 stack packs |
 | `decisions/_template.md` | Decision record template |
 | `skills/` | `vertical-slice`, `code-review`, `db-migration` |
@@ -20,13 +19,13 @@ The baseline rules are always loaded. Project rules, decisions, `context/`, `wor
 
 ## How to apply
 
-1. Copy `AGENTS.md`, `opencode.json` and `.agents/` to the repository root.
+1. Copy `AGENTS.md` and `.agents/` to the repository root.
 2. Keep in `.agents/rules/` the 6 baseline rules plus only the stack packs the repository uses.
 3. Adapt `AGENTS.md` to the project. It is a map, not a copy of the rules.
 4. Add the project decisions and, when they exist, `context/`, `workflows/` and `checklists/`.
-5. Remove `.agents/settings.json` if it exists. `opencode.json` is the only configuration.
-6. Set `baseline: jtt-agents v1` in `.agents/README.md`.
-7. Run `opencode debug config` and `opencode debug skill` from the repository root.
+5. Remove `.agents/settings.json` if it exists.
+6. Set `baseline: jtt-agents v2` in `.agents/README.md`.
+7. Run `opencode debug skill` from the repository root.
 
 ## Rules for the copy
 
@@ -68,4 +67,5 @@ Version history:
 
 | Version | Date | Change |
 |---|---|---|
+| `jtt-agents v2` | 2026-11-07 | Opencode configuration file removed; `AGENTS.md` declares the always-read rules in `Read before any change` |
 | `jtt-agents v1` | 2026-10-20 | Initial baseline: 6 rules, 4 stack packs, 3 skills |
